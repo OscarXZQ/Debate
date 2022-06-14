@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 def inspect(nli, clause):
-    st.write(nli[clause][["premise", "hypothesis", 'label_counter.n', 'label_counter.c', 'label_counter.e']])
+    st.write(nli[clause][["example.premise", "example.hypothesis", 'label_counter.n', 'label_counter.c', 'label_counter.e']])
         
 def flatten_nested_json_df(df):
 
