@@ -6,6 +6,14 @@ import streamlit as st
 def inspect(nli, clause):
     st.write(nli[clause][["example.premise", "example.hypothesis", 'entropy', 'label_counter.n', 'label_counter.c', 'label_counter.e']])
 
+def get_prompt(row):
+    premise = row["example.premise"]
+    hypothesis = row["example.hypothesis"]
+    st.write("Context: {p}".format(p=premise))
+    st.write("Question: Is {h} True?".format(h=hypothesis))
+    st.write("Answer: Not necessarily.")
+    st.write("Explanation:")
+
 @st.cache        
 def flatten_nested_json_df(df):
 

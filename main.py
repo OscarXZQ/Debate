@@ -39,3 +39,5 @@ st.metric("Count", len(nli[(nli['label_counter.n'] <= x) & (nli['label_counter.e
 inspect(nli, (nli['label_counter.n'] <= x) & (nli['label_counter.e'] >= y)
 & (nli['label_counter.c'] >= z) & (abs(nli["label_counter.e"] - nli['label_counter.c']) <= t))
 
+elemNum = int(st.text_input("Input the row number to get the prompt:"))
+get_prompt(nli.iloc[elemNum])
