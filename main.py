@@ -33,6 +33,9 @@ x = st.slider("neutral labels less than", value=20)
 y = st.slider("entailment labels more than")
 z = st.slider("contradiction labels more than")
 t = st.slider("difference between entailment and contradiction less than", value=20)
+
+st.metric("Count", len(nli[(nli['label_counter.n'] <= x) & (nli['label_counter.e'] >= y)
+& (nli['label_counter.c'] >= z) & (abs(nli["label_counter.e"] - nli['label_counter.c']) <= t)]))
 inspect(nli, (nli['label_counter.n'] <= x) & (nli['label_counter.e'] >= y)
 & (nli['label_counter.c'] >= z) & (abs(nli["label_counter.e"] - nli['label_counter.c']) <= t))
 
