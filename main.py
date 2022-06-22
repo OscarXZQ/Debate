@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 import numpy as np
 import random
-from utils import *
+from pages.utils.utils import *
 
 st.title("chaosNLI")
 
@@ -14,7 +14,7 @@ jsonFile_anli = "chaosNLI_v1.0/chaosNLI_alphanli.jsonl"
 snli = flatten_nested_json_df(pd.read_json(jsonFile_snli, lines=True))
 mnli = flatten_nested_json_df(pd.read_json(jsonFile_mnli, lines=True))
 if st.checkbox('Show raw data'):
-    snli
+    mnli
 
 st.header("Dataset")
 selection = st.radio('Pick Dataset', ['snli', 'mnli'])
@@ -34,7 +34,7 @@ y = st.slider("entailment labels more than")
 z = st.slider("contradiction labels more than")
 t = st.slider("difference between entailment and contradiction less than", value=20)
 
-st.metric("Count", len(nli[(nli['label_counter.n'] <= x) & (nli['label_counter.e'] >= y)
+st.metric("Count", len(nli[(nli['label_counter.n'] >= x) & (nli['label_counter.e'] >= y)
 & (nli['label_counter.c'] >= z) & (abs(nli["label_counter.e"] - nli['label_counter.c']) <= t)]))
 inspect(nli, (nli['label_counter.n'] <= x) & (nli['label_counter.e'] >= y)
 & (nli['label_counter.c'] >= z) & (abs(nli["label_counter.e"] - nli['label_counter.c']) <= t))
